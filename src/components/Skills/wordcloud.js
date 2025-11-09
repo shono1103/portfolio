@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 
 import TagCloud from 'TagCloud'
 
-const texts = [
+const skills = [
 	'Python',
 	'Typescript',
 	'C++',
@@ -48,7 +48,7 @@ const WordCloud = () => {
 			return
 		}
 
-		tagCloudInstance.current = TagCloud(containerRef.current, texts, options)
+		tagCloudInstance.current = TagCloud(containerRef.current, skills, options)
 
 		return () => {
 			if (tagCloudInstance.current?.destroy) {
