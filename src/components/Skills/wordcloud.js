@@ -1,53 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import TagCloud from 'TagCloud'
 
-const WordCloud = () => {
-  const [isLoading, setLoad] = useState(true)
-
-  const container = '.content'
   const texts = [
     'Python',
     'Typescript',
-    'Golang',
     'C++',
-    'SQL',
-    'Bash',
+	'Shell',
     'React',
-    'NextJS',
-    'Firebase',
-    'Django',
-    'Flask',
     'NodeJS',
-    'Express',
-    'GraphQL',
     'FastAPI',
-    'MySQL',
-    'PostgreSQL',
-    'MongoDB',
     'Redis',
-    'TensorFlow',
-    'Keras',
-    'PyTorch',
-    'Scikit-learn',
-    'OpenCV',
     'Docker',
     'Kubernetes',
-    'GCP',
-    'AWS',
-    'Terraform',
     'Git',
-    'GitHub',
     'Linux',
-    'Java',
-    'Flutter',
-    'Dart',
     'HTML5',
     'CSS3',
-    'JS',
+	'JavaScript',
     'C',
-    'Solidity',
+	'GDB',
+	'WSL2',
+	'Ruby',
+	'Rails'
   ]
+
   const options = {
     radius: 300,
     // animation speed
