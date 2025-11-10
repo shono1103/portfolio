@@ -56,4 +56,11 @@ npm install
 npm start
 ```
 
+## 🐳 Run with Docker Compose
+```bash
+cd portfolio_front
+docker compose up --build
+```
+The app will be available on http://localhost:3000 (or the port specified via the `PORT` environment variable).
+
 ---

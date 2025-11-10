@@ -1,0 +1,17 @@
+services:
+  portfolio-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-frontend
+    ports:
+      - "${PORT-3000}:3000"
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "start"]
+    restart: unless-stopped
