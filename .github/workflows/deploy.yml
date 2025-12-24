@@ -1,6 +1,8 @@
 name: Deploy Frontend to S3 + CloudFront
 
 on:
+  push:
+    branches: [ "master" ]
   workflow_dispatch: 
 
 permissions:
