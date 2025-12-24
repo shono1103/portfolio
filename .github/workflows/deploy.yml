@@ -3,14 +3,14 @@ name: Deploy Frontend to S3 + CloudFront
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: {}
+  workflow_dispatch: 
 
 permissions:
   id-token: write   # OIDC
   contents: read
 
 concurrency:
-  group: deploy-frontend-${{ github.ref }}
+  group: deploy-production
   cancel-in-progress: true
 
 env:
