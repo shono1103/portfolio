@@ -20,6 +20,9 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout
@@ -48,6 +51,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          role-session-name: github-actions-deploy
           aws-region: ${{ env.AWS_REGION }}
 
       # (推奨) assetsは長期キャッシュ、index.htmlは短期/無キャッシュ
