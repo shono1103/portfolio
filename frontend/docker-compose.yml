@@ -2,6 +2,7 @@ services:
   portfolio-frontend-build:
     image: node:20-slim
     container_name: portfolio-frontend-build
+    working_dir: /app
     environment:
       - NODE_ENV=development
       - HOST=0.0.0.0
@@ -10,6 +11,4 @@ services:
       - .env
     volumes:
       - .:/app
-
-    command: [ "cd", "/app", "&&", "npm", "ci", "&&", "npm", "run", "build" ]
-    restart: unless-stopped
+    command: [ "sh", "-lc", "npm ci && npm run build" ]
