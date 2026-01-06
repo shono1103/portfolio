@@ -8,8 +8,7 @@ const normalizeBaseUrl = (value) => {
 	return value.endsWith("/") ? value.slice(0, -1) : value;
 };
 
-const API_BASE_URL =
-	normalizeBaseUrl(process.env.REACT_APP_API_BASE_URL) || "http://localhost:8000";
+const API_BASE_URL = normalizeBaseUrl(process.env.REACT_APP_API_BASE_URL);
 
 const apiClient = axios.create({
 	baseURL: API_BASE_URL,

@@ -49,7 +49,7 @@ const MailForm = () => {
 
     emailjs
       .send(
-        process.env.REACT_APP_EMIAL_SERVICE_ID,
+        process.env.REACT_APP_EMAIL_SERVICE_ID,
         process.env.REACT_APP_TEMPLATE_ID,
         templateParams,
         process.env.REACT_APP_PUBLIC_KEY
@@ -90,8 +90,13 @@ const MailForm = () => {
   }
 
   const verifyEmail = async (email) => {
+    const validationUrl = process.env.REACT_APP_EMAIL_VALIDATION_URL
+    if (!validationUrl) {
+      return false
+    }
+
     const response = await fetch(
-      `https://mailok-email-validation.p.rapidapi.com/verify?email=${email}`,
+      `${validationUrl}?email=${encodeURIComponent(email)}`,
       {
         method: 'GET',
         headers: {

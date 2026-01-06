@@ -1,0 +1,15 @@
+services:
+  portfolio-frontend-build:
+    image: node:20-slim
+    container_name: portfolio-frontend-build
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+    command: [ "cd", "/app", "&&", "npm", "ci", "&&", "npm", "run", "build" ]
+    restart: unless-stopped
