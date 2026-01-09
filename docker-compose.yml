@@ -4,13 +4,17 @@ services:
       context: ./frontend
     image: portfolio-frontend
     container_name: portfolio-frontend
+    depends_on:
+      - backend
     restart: unless-stopped
 
   backend:
+    build:
+      context: ./backend
     image: portfolio-backend:latest
     container_name: portfolio-backend
     env_file:
-      - ./backend/.env
+      - .env
     depends_on:
       db:
         condition: service_healthy
@@ -21,20 +25,20 @@ services:
     container_name: portfolio-nginx
     volumes:
       - ./nginx/default.conf:/etc/nginx/nginx.conf:ro
-      - ./conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - frontend
+      - backend
     ports:
       - 8001:80
+    restart: unless-stopped
   db:
     image: postgres:16
     container_name: portfolio-db
-    environment:
-      POSTGRES_USER: ${DB_USERNAME:-postgres}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
-      POSTGRES_DB: ${DB_NAME:-portfolio}
-    ports:
-      - "5432:5432"
+    env_file:
+      - .env
     volumes:
-      - ./postgre:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-portfolio} || exit 1" ]
       interval: 5s

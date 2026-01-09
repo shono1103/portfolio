@@ -8,15 +8,10 @@ services:
     container_name: portfolio-api
     env_file:
       - .env
-    ports:
-      - "${APP_PORT:-8000}:8000"
     depends_on:
       db:
         condition: service_healthy
     restart: unless-stopped
-    # 開発時にホットリロードしたければコメントアウト外す
-    # volumes:
-    #   - ./app:/app/app:ro
 
   db:
     image: postgres:16
@@ -25,16 +20,22 @@ services:
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
       POSTGRES_DB: ${DB_NAME:-portfolio}
-    ports:
-      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-portfolio} || exit 1" ]
       interval: 5s
       timeout: 3s
       retries: 10
     restart: unless-stopped
-
-volumes:
-  pgdata:
+  nginx:
+    image: nginx:alpine
+    container_name: portfolio-nginx
+    depends_on:
+      - app
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - 8001:80
+    restart: unless-stopped

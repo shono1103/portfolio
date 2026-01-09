@@ -47,6 +47,4 @@ Thumbs.db
 # Docker / compose overrides
 docker-compose.override.yml
 
-# aws
-aws*/*
-aws/*
+postgres/

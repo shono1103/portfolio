@@ -1,4 +1,6 @@
 # ボリュームマウント用ディレクトリ
-nginx/
 postgre/
+db/data/
 
+
+.env
