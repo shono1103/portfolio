@@ -10,19 +10,19 @@ def build_database_url() -> str:
 
     db_type = os.getenv("DB_TYPE")
     db_driver = os.getenv("DB_DRIVER")
-    db_username = os.getenv("DB_USERNAME")
-    db_password = os.getenv("DB_PASSWORD")
+    db_username = os.getenv("POSTGRES_USER")
+    db_password = os.getenv("POSTGRES_PASSWORD")
     db_domain = os.getenv("DB_DOMAIN")
     db_port = os.getenv("DB_PORT")
-    db_name = os.getenv("DB_NAME")
+    db_name = os.getenv("POSTGRES_DB")
 
     missing = [
         key for key, value in {
             "DB_TYPE": db_type,
-            "DB_USERNAME": db_username,
+            "POSTGRES_USER": db_username,
             "DB_DOMAIN": db_domain,
             "DB_PORT": db_port,
-            "DB_NAME": db_name,
+            "POSTGRES_DB": db_name,
         }.items()
         if value is None
     ]
