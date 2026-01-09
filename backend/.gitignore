@@ -46,5 +46,4 @@ Thumbs.db
 
 # Docker / compose overrides
 docker-compose.override.yml
-
-postgres/
+db/data/
