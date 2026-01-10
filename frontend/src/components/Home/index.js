@@ -13,7 +13,7 @@ const Home = () => {
 
 	const nameArray = 'aiki Shono'.split('')
 	const jobArray = 'Software Engineer'.split('')
-	const interestArray = 'Embeded | Infra | Web (a little)'.split('')
+	const interestArray = 'Embedded | Infra | Web (a little)'.split('')
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -33,7 +33,7 @@ const Home = () => {
 							<br />
 							<span className={`${letterClass} _13`}>I</span>
 							<span className={`${letterClass} _14`}>'m</span>
-							<img src={LogoTitle} alt="Sudip Banerjee" />
+							<img src={LogoTitle} alt="Saiki Shono" />
 							<AnimatedLetters
 								letterClass={letterClass}
 								strArray={nameArray}
