@@ -4,7 +4,7 @@
   user-select: none;
   position: relative;
   padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 48px;
   box-sizing: border-box;
 }
 
@@ -130,6 +130,17 @@
     &:hover {
       color: #ff4500;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: auto;
+    margin: 0 auto;
+    padding: 0 16px 32px;
   }
 }
 
