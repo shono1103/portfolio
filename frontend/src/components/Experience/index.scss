@@ -244,6 +244,12 @@
 
 /* Responsive design */
 @media screen and (max-width: 768px) {
+    .experience-page {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
     .experience-container {
         position: relative;
         right: auto;

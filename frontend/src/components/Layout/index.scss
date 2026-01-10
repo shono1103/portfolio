@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   user-select: none;
+  position: relative;
 }
 
 .top-tags {
@@ -202,5 +203,49 @@ html {
 
   to {
     transform: translateY(-2000px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html,
+  body {
+    overflow: auto;
+  }
+
+  .page {
+    padding: 80px 16px 96px;
+    box-sizing: border-box;
+  }
+
+  .container {
+    position: relative;
+    top: 0;
+    margin: 0;
+    height: auto;
+    min-height: auto;
+    transform: none;
+  }
+
+  .container .text-zone {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .tags {
+    left: 16px;
+    font-size: 14px;
+    position: relative;
+  }
+
+  .top-tags {
+    top: 12px;
+  }
+
+  .bottom-tags {
+    display: block;
+    margin-top: 24px;
   }
 }

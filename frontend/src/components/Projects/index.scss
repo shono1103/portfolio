@@ -321,6 +321,12 @@
 }
 
 @media screen and (max-width: 768px) {
+    .projects-page {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
     .projects-container {
         position: relative;
         right: auto;

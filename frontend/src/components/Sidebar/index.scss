@@ -144,3 +144,9 @@
 .random {
 	color: #b9b9b9;
 }
+
+@media screen and (max-width: 1024px) {
+	.nav-bar {
+		display: none;
+	}
+}
