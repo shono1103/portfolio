@@ -41,27 +41,27 @@ const Header = () => {
 			</button>
 
 			<nav className={`nav-links ${isOpen ? 'show' : ''}`}>
-				<NavLink exact="true" activeclassname="active" to="/" onClick={closeMenu}>
+				<NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/" onClick={closeMenu}>
 					<FontAwesomeIcon icon={faHome} />
 					<span>Home</span>
 				</NavLink>
-				<NavLink activeclassname="active" to="/about" onClick={closeMenu}>
+				<NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/about" onClick={closeMenu}>
 					<FontAwesomeIcon icon={faUser} />
 					<span>About</span>
 				</NavLink>
-				<NavLink activeclassname="active" to="/experience" onClick={closeMenu}>
+				<NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/experience" onClick={closeMenu}>
 					<FontAwesomeIcon icon={faBriefcase} />
 					<span>Experience</span>
 				</NavLink>
-				<NavLink activeclassname="active" to="/projects" onClick={closeMenu}>
+				<NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/projects" onClick={closeMenu}>
 					<FontAwesomeIcon icon={faLaptopCode} />
 					<span>Projects</span>
 				</NavLink>
-				<NavLink activeclassname="active" to="/skills" onClick={closeMenu}>
+				<NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/skills" onClick={closeMenu}>
 					<FontAwesomeIcon icon={faScrewdriverWrench} />
 					<span>Skills</span>
 				</NavLink>
-				<NavLink activeclassname="active" to="/contact" onClick={closeMenu}>
+				<NavLink className={({ isActive }) => (isActive ? 'active' : '')} to="/contact" onClick={closeMenu}>
 					<FontAwesomeIcon icon={faEnvelope} />
 					<span>Contact</span>
 				</NavLink>
