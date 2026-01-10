@@ -3,6 +3,9 @@
   min-height: 100vh;
   user-select: none;
   position: relative;
+  padding-top: 80px;
+  padding-bottom: 96px;
+  box-sizing: border-box;
 }
 
 .top-tags {
@@ -16,8 +19,8 @@
   color: #00ff7f; // green
   opacity: 0.9;
   position: absolute;
-  bottom: 0;
-  left: 120px;
+  bottom: 72px;
+  left: 24px;
   font-size: 18px;
   font-family: 'La Belle Aurore', cursive;
 }
