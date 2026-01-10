@@ -1,4 +1,5 @@
 import './index.scss'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import {
 	faBriefcase,
 	faEnvelope,
@@ -10,6 +11,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, NavLink } from 'react-router-dom'
 
+import codechefLogo from '../../assets/images/codechef.png'
 import LogoS from '../../assets/images/logo-s.png'
 import LogoSubtitle from '../../assets/images/Shono_logo_white.png'
 
@@ -53,14 +55,43 @@ const Sidebar = () => {
 						<FontAwesomeIcon icon={faScrewdriverWrench} color="#4d4d4e" />
 					</NavLink>
 
-					<NavLink
-						activeclassname="active"
-						className="contact-link"
-						to="/contact"
-					>
-						<FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
-					</NavLink>
-				</nav>
+				<NavLink
+					activeclassname="active"
+					className="contact-link"
+					to="/contact"
+				>
+					<FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
+				</NavLink>
+			</nav>
+				<ul className="sns-links">
+					<li>
+						<a
+							href="https://www.linkedin.com/in/banerjee-sudip/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<FontAwesomeIcon icon={faLinkedin} color="#b9b9b9" />
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://github.com/metal-oopa"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<FontAwesomeIcon icon={faGithub} color="#b9b9b9" />
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://www.codechef.com/users/metal_oopa"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<img src={codechefLogo} width="24" alt="Codechef" />
+						</a>
+					</li>
+				</ul>
 			</div>
 		</>
 	)
