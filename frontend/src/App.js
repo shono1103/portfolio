@@ -1,13 +1,21 @@
 import { Route, Routes } from 'react-router-dom'
 
-import About from './components/About'
-import Contact from './components/Contact'
-import Experience from './components/Experience'
-import Home from './components/Home'
-import Layout from './components/Layout'
-import Projects from './components/Projects'
-import Skills from './components/Skills'
-import Soundbar from './components/Soundbar'
+import About from './components/normal/About'
+import Contact from './components/normal/Contact'
+import Experience from './components/normal/Experience'
+import Home from './components/normal/Home'
+import Layout from './components/normal/Layout'
+import Projects from './components/normal/Projects'
+import Skills from './components/normal/Skills'
+import Soundbar from './components/normal/Soundbar'
+
+import AdminLayout from './components/admin/AdminLayout'
+import Login from './components/admin/Login'
+import Dashboard from './components/admin/Dashboard'
+import JobsManager from './components/admin/JobsManager'
+import ProjectsManager from './components/admin/ProjectsManager'
+import SkillsManager from './components/admin/SkillsManager'
+
 import './App.scss'
 
 function App() {
@@ -22,6 +30,14 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/skills" element={<Skills />} />
+        </Route>
+        
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="jobs" element={<JobsManager />} />
+          <Route path="projects" element={<ProjectsManager />} />
+          <Route path="skills" element={<SkillsManager />} />
         </Route>
       </Routes>
     </>
