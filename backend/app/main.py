@@ -1,4 +1,5 @@
 # app/main.py の起動時に一度だけテーブル作成したい場合
+import os
 from fastapi import FastAPI
 from app.core.config import settings, apply_cors
 from app.api.v1.router import api_v1
@@ -23,9 +24,12 @@ try:
         seed_run()
     
     # Create default admin user if not exists
-    existing_admin = db.query(UserModel).filter(UserModel.username == "admin").first()
+    admin_username = os.getenv("ADMIN_USERNAME", "admin")
+    admin_password = os.getenv("ADMIN_PASSWORD", "admin123")
+    existing_admin = db.query(UserModel).filter(UserModel.username == admin_username).first()
     if not existing_admin:
-        create_user(db, "admin", "admin123")  # TODO: Change default password
+        create_user(db, admin_username, admin_password)
+        print(f"Created admin user: {admin_username}")
 finally:
     db.close()
 

@@ -1,34 +1,53 @@
 # Portfolio API (FastAPI)
 
-ポートフォリオ用の軽量 FastAPI バックエンド。最小構成としてスキル配列を返すエンドポイントのみ実装済みですが、今後プロジェクト情報やブログ記事などに発展させる前提で Docker / FastAPI の基本土台を用意しています。
+ポートフォリオ用の FastAPI バックエンド。スキル、プロジェクト、職務経歴情報を管理する API と、管理画面用の認証機能を提供します。
 
 ## 技術スタック
 - Python 3.12
 - FastAPI + Uvicorn
+- PostgreSQL + SQLAlchemy
+- JWT 認証 (python-jose, passlib)
 - Docker / Docker Compose（本番・検証用）
 
 ## 提供エンドポイント
-| Method | Path          | Summary                         |
-|--------|---------------|---------------------------------|
-| GET    | `/api/skills` | サンプルのスキル配列を返す（初期実装） |
-
-将来的に `/api/projects`、`/api/posts` などを追加する想定です。
+| Method | Path          | Summary                         | 認証 |
+|--------|---------------|---------------------------------|------|
+| GET    | `/api/skills` | スキル一覧を取得 | 不要 |
+| POST   | `/api/skills` | スキルを作成 | 必要 |
+| DELETE | `/api/skills/{name}` | スキルを削除 | 必要 |
+| GET    | `/api/projects` | プロジェクト一覧を取得 | 不要 |
+| POST   | `/api/projects` | プロジェクトを作成 | 必要 |
+| PUT    | `/api/projects/{id}` | プロジェクトを更新 | 必要 |
+| DELETE | `/api/projects/{id}` | プロジェクトを削除 | 必要 |
+| GET    | `/api/jobs` | 職務経歴一覧を取得 | 不要 |
+| POST   | `/api/jobs` | 職務経歴を作成 | 必要 |
+| PUT    | `/api/jobs/{id}` | 職務経歴を更新 | 必要 |
+| DELETE | `/api/jobs/{id}` | 職務経歴を削除 | 必要 |
+| POST   | `/api/auth/login` | 管理者ログイン | 不要 |
 
 FastAPI 標準のドキュメントも利用可能です。
 - Swagger UI: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
 
 ## 環境変数
-`portfolio_back/.env` に設定し、Docker Compose でもそのまま読み込みます。
-```
-PORT=8000        # 公開ポート（未設定時は 8000）
-LOG_LEVEL=info   # Uvicorn ログレベル
-```
+`.env.example` をコピーして `.env` ファイルを作成し、必要な環境変数を設定してください。
+
+重要な環境変数:
+- `JWT_SECRET_KEY`: JWT トークンの署名に使用する秘密鍵（本番環境では強力なランダム文字列に変更）
+- `ADMIN_USERNAME`: 初期管理者ユーザー名
+- `ADMIN_PASSWORD`: 初期管理者パスワード（本番環境では強力なパスワードに変更）
+- `DATABASE_URL`: PostgreSQL 接続 URL
 
 ## ローカル開発
 依存インストール:
 ```bash
 pip install -r requirements.txt
+```
+
+環境変数設定:
+```bash
+cp .env.example .env
+# .env ファイルを編集して適切な値を設定
 ```
 
 ホットリロード付き起動:
@@ -42,26 +61,48 @@ docker compose up --build
 ```
 停止は `docker compose down`。ログ確認は `docker compose logs -f skills-api`。
 
+## 認証について
+管理画面（POST/PUT/DELETE 操作）を使用するには、まず `/api/auth/login` でログインしてアクセストークンを取得してください。
+
+```bash
+curl -X POST http://localhost:8000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "password": "admin123"}'
+```
+
+取得したトークンを `Authorization: Bearer {token}` ヘッダーに含めて API リクエストを送信します。
+
 ## ディレクトリ構成
 ```
 portfolio_back/
 ├── app/
 │   ├── __init__.py
-│   └── main.py        # FastAPI アプリ本体（CORS + 現行API）
+│   ├── main.py              # FastAPI アプリ本体
+│   ├── api/
+│   │   ├── deps.py          # 依存性注入（認証含む）
+│   │   └── v1/              # API v1 エンドポイント
+│   │       ├── auth.py
+│   │       ├── jobs.py
+│   │       ├── projects.py
+│   │       └── skills.py
+│   ├── core/
+│   │   └── config.py        # 設定（CORS含む）
+│   ├── db/
+│   │   ├── base.py          # DB セッション
+│   │   └── models.py        # SQLAlchemy モデル
+│   ├── repositories/        # データアクセス層
+│   ├── schemas/             # Pydantic スキーマ
+│   └── services/            # ビジネスロジック層
+├── scripts/
+│   └── seed.py              # 初期データ投入
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-├── .env
+├── .env.example
 └── README.md
 ```
 
-## カスタマイズのヒント
-- `app/main.py` の FastAPI インスタンスにルーターを追加して任意の API を増やせます。
-- 既存の `DEFAULT_SKILLS` 配列はダミーデータなので、別データソースに置き換えても構いません。
-- CORS 設定は `allow_origins` にデプロイ先フロントを指定してください。
-- モジュール分割する場合は `app` 配下にパッケージを切り出し、`app/main.py` からインポートします。
-
-## トラブルシュート
-- 8000 番が使われている → `.env` の `PORT` を別番号に変更。
-- 変更が反映されない → 開発時は `uvicorn --reload` を使用。
-- Docker ビルドが遅い → `requirements.txt` を先に COPY しているので、依存を触らない限りキャッシュが効きます。
+## セキュリティ
+- 本番環境では必ず `JWT_SECRET_KEY` を強力なランダム文字列に変更してください
+- デフォルトの管理者パスワードを変更してください
+- CORS 設定で許可するオリジンを限定してください
