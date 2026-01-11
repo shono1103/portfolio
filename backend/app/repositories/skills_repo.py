@@ -25,6 +25,16 @@ class SkillsRepository:
         self.db.refresh(skill)
         return skill.name
 
+    def delete(self, name: str) -> bool:
+        model = self.db.execute(
+            select(SkillModel).where(SkillModel.name == name)
+        ).scalar_one_or_none()
+        if not model:
+            return False
+        self.db.delete(model)
+        self.db.commit()
+        return True
+
     def clear_all(self) -> None:
         self.db.execute(delete(SkillModel))
         self.db.commit()

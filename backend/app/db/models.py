@@ -2,6 +2,13 @@ from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB
 from app.db.base import Base
 
+# users for authentication
+class UserModel(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String(100), unique=True, nullable=False)
+    hashed_password = Column(String(200), nullable=False)
+
 # skills は単純：name のみ
 class SkillModel(Base):
     __tablename__ = "skills"

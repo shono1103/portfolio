@@ -16,3 +16,15 @@ class ProjectsService:
     def create_project(self, db: Session, project: ProjectCreate) -> Project:
         repo = self.repo_factory(db)
         return repo.create(project)
+
+    def get_project(self, db: Session, project_id: int) -> Project | None:
+        repo = self.repo_factory(db)
+        return repo.get_by_id(project_id)
+
+    def update_project(self, db: Session, project_id: int, project: ProjectCreate) -> Project | None:
+        repo = self.repo_factory(db)
+        return repo.update(project_id, project)
+
+    def delete_project(self, db: Session, project_id: int) -> bool:
+        repo = self.repo_factory(db)
+        return repo.delete(project_id)

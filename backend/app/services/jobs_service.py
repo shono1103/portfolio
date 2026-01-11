@@ -16,3 +16,15 @@ class JobsService:
     def create_job(self, db: Session, job: JobExperienceCreate) -> JobExperience:
         repo = self.repo_factory(db)
         return repo.create(job)
+
+    def get_job(self, db: Session, job_id: int) -> JobExperience | None:
+        repo = self.repo_factory(db)
+        return repo.get_by_id(job_id)
+
+    def update_job(self, db: Session, job_id: int, job: JobExperienceCreate) -> JobExperience | None:
+        repo = self.repo_factory(db)
+        return repo.update(job_id, job)
+
+    def delete_job(self, db: Session, job_id: int) -> bool:
+        repo = self.repo_factory(db)
+        return repo.delete(job_id)

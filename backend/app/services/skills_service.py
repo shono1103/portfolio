@@ -17,3 +17,7 @@ class SkillsService:
     def create_skill(self, db: Session, skill: Skill) -> str:
         repo = self.repo_factory(db)
         return repo.create(skill.name)
+
+    def delete_skill(self, db: Session, name: str) -> bool:
+        repo = self.repo_factory(db)
+        return repo.delete(name)

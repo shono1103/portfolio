@@ -6,7 +6,7 @@ class Settings(BaseModel):
     app_name: str = "Portfolio API"
     version: str = "0.2.0"
     cors_allow_origins: list[str] = ["*"]   # 本番はオリジンを絞る
-    cors_allow_methods: list[str] = ["GET"]
+    cors_allow_methods: list[str] = ["GET", "POST", "PUT", "DELETE"]
     cors_allow_headers: list[str] = ["*"]
     cors_allow_credentials: bool = True
 
