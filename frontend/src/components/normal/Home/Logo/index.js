@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useRef } from 'react'
 
-import MyImage from '../../../assets/images/myImage.jpg'
+import MyImage from '../../../../assets/images/myImage.jpg'
 import './index.scss'
 
 const Logo = () => {

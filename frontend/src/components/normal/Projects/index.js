@@ -4,7 +4,7 @@ import { faCode, faCodeBranch, faExternalLinkAlt } from '@fortawesome/free-solid
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Loader from 'react-loaders'
 
-import { projectsApi } from '../../common/apiClient'
+import { projectsApi } from '../../../common/apiClient'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 

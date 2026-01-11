@@ -1,5 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
 
+import AdminLayout from './components/admin/AdminLayout'
+import Dashboard from './components/admin/Dashboard'
+import JobsManager from './components/admin/JobsManager'
+import Login from './components/admin/Login'
+import ProjectsManager from './components/admin/ProjectsManager'
+import SkillsManager from './components/admin/SkillsManager'
 import About from './components/normal/About'
 import Contact from './components/normal/Contact'
 import Experience from './components/normal/Experience'
@@ -9,12 +15,6 @@ import Projects from './components/normal/Projects'
 import Skills from './components/normal/Skills'
 import Soundbar from './components/normal/Soundbar'
 
-import AdminLayout from './components/admin/AdminLayout'
-import Login from './components/admin/Login'
-import Dashboard from './components/admin/Dashboard'
-import JobsManager from './components/admin/JobsManager'
-import ProjectsManager from './components/admin/ProjectsManager'
-import SkillsManager from './components/admin/SkillsManager'
 
 import './App.scss'
 

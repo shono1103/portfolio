@@ -4,7 +4,7 @@ import Loader from 'react-loaders'
 import { Link } from 'react-router-dom'
 
 import Logo from './Logo'
-import LogoTitle from '../../assets/images/logo-s.png'
+import LogoTitle from '../../../assets/images/logo-s.png'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 

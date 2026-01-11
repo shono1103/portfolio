@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import TagCloud from 'TagCloud'
 
-import { skillsApi } from '../../common/apiClient'
+import { skillsApi } from '../../../common/apiClient'
 
 const DEFAULT_SKILLS = []
 

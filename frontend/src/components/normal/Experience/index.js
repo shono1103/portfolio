@@ -4,7 +4,7 @@ import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Loader from 'react-loaders'
 
-import { jobsApi } from '../../common/apiClient'
+import { jobsApi } from '../../../common/apiClient'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 
