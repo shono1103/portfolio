@@ -1,47 +1,47 @@
 .page {
-  width: 100%;
-  min-height: 100vh;
-  user-select: none;
-  position: relative;
-  padding-top: 80px;
-  padding-bottom: 48px;
-  box-sizing: border-box;
+	width: 100%;
+	min-height: 100vh;
+	user-select: none;
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 48px;
+	box-sizing: border-box;
 }
 
 .top-tags {
-  bottom: auto;
-  top: 35px;
+	bottom: auto;
+	top: 35px;
 }
 
 .tags {
-  // color: #ffd700;
-  // color: #ff4500; // red
-  color: #00ff7f; // green
-  opacity: 0.9;
-  position: absolute;
-  bottom: 72px;
-  left: 24px;
-  font-size: 18px;
-  font-family: 'La Belle Aurore', cursive;
+	// color: #ffd700;
+	// color: #ff4500; // red
+	color: #00ff7f; // green
+	opacity: 0.9;
+	position: absolute;
+	bottom: 72px;
+	left: 24px;
+	font-size: 18px;
+	font-family: 'La Belle Aurore', cursive;
 }
 
 .bottom-tag-html {
-  margin-left: -20px;
+	margin-left: -20px;
 }
 
 .container {
-  width: 100%;
-  will-change: contents;
-  height: 90%;
-  min-height: 566px;
-  position: absolute;
-  opacity: 0;
-  top: 5%;
-  margin: 0 auto;
-  z-index: 1;
-  transform-style: preserve-3d;
-  animation: fadeIn 1s forwards;
-  animation-delay: 1s;
+	width: 100%;
+	will-change: contents;
+	height: 90%;
+	min-height: 566px;
+	position: absolute;
+	opacity: 0;
+	top: 5%;
+	margin: 0 auto;
+	z-index: 1;
+	transform-style: preserve-3d;
+	animation: fadeIn 1s forwards;
+	animation-delay: 1s;
 }
 
 .container.contact-page,
@@ -49,110 +49,85 @@
 .container.skills-page,
 .container.experience-page,
 .container.projects-page {
-  position: relative;
-  height: auto;
-  min-height: auto;
-  top: auto;
-  margin: 0 auto;
-  padding: 0 20px 40px;
+	position: relative;
+	height: auto;
+	min-height: auto;
+	top: auto;
+	margin: 0 auto;
+	padding: 0 20px 40px;
 
-  .text-zone {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: 960px;
-    vertical-align: middle;
-    display: block;
-    max-height: none;
-    margin: 0 auto 24px;
+	.text-zone {
+		position: relative;
+		left: auto;
+		top: auto;
+		transform: none;
+		width: 100%;
+		max-width: 960px;
+		vertical-align: middle;
+		display: block;
+		max-height: none;
+		margin: 0 auto 24px;
 
-    h1 {
-      font-size: 53px;
-      font-family: 'Coolvetica';
-      color: #00ff7f;
-      font-weight: 400;
-      margin-top: 0;
-      position: relative;
-      margin-bottom: 40px;
-      left: -10px;
+		h1 {
+			font-size: 53px;
+			font-family: 'Coolvetica';
+			color: #00ff7f;
+			font-weight: 400;
+			margin-top: 0;
+			position: relative;
+			margin-bottom: 40px;
+			left: -10px;
+		}
 
-      &:before {
-        content: '<h1>';
-        font-family: 'La Belle Aurore', cursive;
-        color: #00ff7f;
-        font-size: 18px;
-        position: absolute;
-        margin-top: -10px;
-        left: -10px;
-        opacity: 0.6;
-        line-height: 18px;
-      }
+		p {
+			font-size: 17px;
+			color: #fff;
+			font-family: sans-serif;
+			font-weight: 300;
+			max-width: fit-content;
+			animation: pulse 1s;
 
-      &:after {
-        content: '<h1/>';
-        font-family: 'La Belle Aurore', cursive;
-        color: #00ff7f;
-        font-size: 18px;
-        line-height: 18px;
-        position: absolute;
-        left: -30px;
-        bottom: -20px;
-        margin-left: 20px;
-        opacity: 0.6;
-      }
-    }
+			&:nth-of-type(1) {
+				animation-delay: 1.1s;
+			}
 
-    p {
-      font-size: 17px;
-      color: #fff;
-      font-family: sans-serif;
-      font-weight: 300;
-      max-width: fit-content;
-      animation: pulse 1s;
+			&:nth-of-type(2) {
+				animation-delay: 1.2s;
+			}
 
-      &:nth-of-type(1) {
-        animation-delay: 1.1s;
-      }
+			&:nth-of-type(3) {
+				animation-delay: 1.3s;
+			}
+		}
+	}
 
-      &:nth-of-type(2) {
-        animation-delay: 1.2s;
-      }
-
-      &:nth-of-type(3) {
-        animation-delay: 1.3s;
-      }
-    }
-  }
-
-  .text-animate-hover {
-    &:hover {
-      color: #ff4500;
-    }
-  }
+	.text-animate-hover {
+		&:hover {
+			color: #ff4500;
+		}
+	}
 }
 
 @media screen and (max-width: 1024px) {
-  .container {
-    position: relative;
-    top: auto;
-    height: auto;
-    min-height: auto;
-    margin: 0 auto;
-    padding: 0 16px 32px;
-  }
+	.container {
+		position: relative;
+		top: auto;
+		height: auto;
+		min-height: auto;
+		margin: 0 auto;
+		padding: 0 16px 32px;
+	}
 }
 
 // n is number of stars required
 @function multiple-box-shadow($n) {
-  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+	$value: '#{random(2000)}px #{random(2000)}px #FFF';
 
-  @for $i from 2 through $n {
-    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
-  }
+	@for $i from 2 through $n {
+		$value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+	}
 
-  @return unquote($value);
+	@return unquote($value);
 }
 
 $shadows-small: multiple-box-shadow(1400);
@@ -160,115 +135,116 @@ $shadows-medium: multiple-box-shadow(400);
 $shadows-big: multiple-box-shadow(200);
 
 html {
-  height: 100%;
-  // background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-  overflow: hidden;
+	height: 100%;
+	// background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+	overflow: hidden;
 }
 
 #stars {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: $shadows-small;
-  animation: animStar 50s linear infinite;
+	width: 1px;
+	height: 1px;
+	background: transparent;
+	box-shadow: $shadows-small;
+	animation: animStar 50s linear infinite;
 
-  &:after {
-    content: ' ';
-    position: absolute;
-    top: 2000px;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: $shadows-small;
-  }
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: 2000px;
+		width: 1px;
+		height: 1px;
+		background: transparent;
+		box-shadow: $shadows-small;
+	}
 }
 
 #stars2 {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: $shadows-medium;
-  animation: animStar 100s linear infinite;
+	width: 2px;
+	height: 2px;
+	background: transparent;
+	box-shadow: $shadows-medium;
+	animation: animStar 100s linear infinite;
 
-  &:after {
-    content: ' ';
-    position: absolute;
-    top: 2000px;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: $shadows-medium;
-  }
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: 2000px;
+		width: 2px;
+		height: 2px;
+		background: transparent;
+		box-shadow: $shadows-medium;
+	}
 }
 
 #stars3 {
-  width: 3px;
-  height: 3px;
-  background: transparent;
-  box-shadow: $shadows-big;
-  animation: animStar 150s linear infinite;
+	width: 3px;
+	height: 3px;
+	background: transparent;
+	box-shadow: $shadows-big;
+	animation: animStar 150s linear infinite;
 
-  &:after {
-    content: ' ';
-    position: absolute;
-    top: 2000px;
-    width: 3px;
-    height: 3px;
-    background: transparent;
-    box-shadow: $shadows-big;
-  }
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: 2000px;
+		width: 3px;
+		height: 3px;
+		background: transparent;
+		box-shadow: $shadows-big;
+	}
 }
 
 @keyframes animStar {
-  from {
-    transform: translateY(0px);
-  }
+	from {
+		transform: translateY(0px);
+	}
 
-  to {
-    transform: translateY(-2000px);
-  }
+	to {
+		transform: translateY(-2000px);
+	}
 }
 
 @media screen and (max-width: 1024px) {
-  html,
-  body {
-    overflow: auto;
-  }
 
-  .page {
-    padding: 80px 16px 96px;
-    box-sizing: border-box;
-  }
+	html,
+	body {
+		overflow: auto;
+	}
 
-  .container {
-    position: relative;
-    top: 0;
-    margin: 0;
-    height: auto;
-    min-height: auto;
-    transform: none;
-  }
+	.page {
+		padding: 80px 16px 96px;
+		box-sizing: border-box;
+	}
 
-  .container .text-zone {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-    width: 100%;
-  }
+	.container {
+		position: relative;
+		top: 0;
+		margin: 0;
+		height: auto;
+		min-height: auto;
+		transform: none;
+	}
 
-  .tags {
-    left: 16px;
-    font-size: 14px;
-    position: relative;
-  }
+	.container .text-zone {
+		position: relative;
+		left: 0;
+		top: 0;
+		transform: none;
+		width: 100%;
+	}
 
-  .top-tags {
-    top: 12px;
-  }
+	.tags {
+		left: 16px;
+		font-size: 14px;
+		position: relative;
+	}
 
-  .bottom-tags {
-    display: block;
-    margin-top: 24px;
-  }
+	.top-tags {
+		top: 12px;
+	}
+
+	.bottom-tags {
+		display: block;
+		margin-top: 24px;
+	}
 }
